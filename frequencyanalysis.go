@@ -2,7 +2,7 @@ package gofrequencyanalysis
 
 /*
  * This package enable to calculate the occurence
- * of each character contained in given text.
+ * of each character contained in given Text.
  */
 
 import (
@@ -19,64 +19,64 @@ type IFreqAnalysis interface {
 
 //Pair : Represent some data around char, its number and occurence frequency.
 type Pair struct {
-	char  string
-	count int
-	freq  float32
+	Char  string
+	Count int
+	Freq  float32
 }
 
-/*Counter : Contain all data around text like :
- * The original text
- * the sizeof the text
- * mappedKeys which is the number of time a key appear in the text
+/*Counter : Contain all data around Text like :
+ * The original Text
+ * the sizeof the Text
+ * mappedKeys which is the number of time a key appear in the Text
  * array of Pair (see Pair)
  */
 type Counter struct {
-	text       string
-	sizeText   int
-	mappedKeys map[string]int
-	pairs      []Pair
+	Text       string
+	SizeText   int
+	MappedKeys map[string]int
+	Pairs      []Pair
 }
 
 //Sort : Enable to sorting the Pairs
-func (counter *Counter) Sort() {
-	var pairs []Pair
+func (Counter *Counter) Sort() {
+	var Pairs []Pair
 	//Initialization of Pairs
-	for k, v := range counter.mappedKeys {
-		pairs = append(pairs, Pair{k, v, 0})
+	for k, v := range Counter.MappedKeys {
+		Pairs = append(Pairs, Pair{k, v, 0})
 	}
 	//Sorting
-	sort.Slice(pairs, func(i, j int) bool {
-		return pairs[i].count > pairs[j].count
+	sort.Slice(Pairs, func(i, j int) bool {
+		return Pairs[i].Count > Pairs[j].Count
 	})
-	counter.pairs = pairs
+	Counter.Pairs = Pairs
 }
 
-//Mapping : Count each character in text
-func (counter *Counter) Mapping() {
+//Mapping : Count each character in Text
+func (Counter *Counter) Mapping() {
 
-	counter.sizeText = len(counter.text)
+	Counter.SizeText = len(Counter.Text)
 
-	countedKeys := make(map[string]int)
+	CountedKeys := make(map[string]int)
 
-	for i := 0; i < counter.sizeText; i++ {
-		key := counter.text[i : i+1]
-		countedKeys[key]++
+	for i := 0; i < Counter.SizeText; i++ {
+		key := Counter.Text[i : i+1]
+		CountedKeys[key]++
 	}
-	counter.mappedKeys = countedKeys
+	Counter.MappedKeys = CountedKeys
 }
 
 //Frequency : Calculate the occurrence frequency
-func (counter *Counter) Frequency() {
+func (Counter *Counter) Frequency() {
 
-	for i := 0; i < len(counter.pairs); i++ {
+	for i := 0; i < len(Counter.Pairs); i++ {
 
-		counter.pairs[i].freq = float32(counter.pairs[i].count) / float32(counter.sizeText) * float32(100)
+		Counter.Pairs[i].Freq = float32(Counter.Pairs[i].Count) / float32(Counter.SizeText) * float32(100)
 	}
 }
 
 //Analysis : Automated the process to mapping, sorting and finally calcule frequency
-func (counter *Counter) Analysis() {
-	counter.Mapping()
-	counter.Sort()
-	counter.Frequency()
+func (Counter *Counter) Analysis() {
+	Counter.Mapping()
+	Counter.Sort()
+	Counter.Frequency()
 }
