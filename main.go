@@ -1,4 +1,4 @@
-package frequencyanalysis
+package gofrequencyanalysis
 
 /*
  * This package enable to calculate the occurence
