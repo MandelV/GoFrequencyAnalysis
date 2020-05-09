@@ -40,30 +40,30 @@ So, to do some analysis you just need two things : a text and a counter which al
 Here an example :
 
 ```Go
-	text := "beautiful text"
+text := "beautiful text"
 
-	counter := Counter{Text: text} //Not needed to set the size of text
+counter := Counter{Text: text} //Not needed to set the size of text
 
-	var freqAnalysis IFreqAnalysis = &counter
+var freqAnalysis IFreqAnalysis = &counter
 
-	freqAnalysis.Analysis()
+freqAnalysis.Analysis()
 
-	for _, pair := range counter.Pairs {
-		test.Log(pair.Char, pair.Count, pair.Freq)
-	}
-	/*
-		Output:
-		* t 3 21.428572
-		* e 2 14.285715
-		* u 2 14.285715
-		* l 1 7.1428576
-		*   1 7.1428576
-		* b 1 7.1428576
-		* a 1 7.1428576
-		* i 1 7.1428576
-		* f 1 7.1428576
-		* x 1 7.1428576
-	*/
+for _, pair := range counter.Pairs {
+	test.Log(pair.Char, pair.Count, pair.Freq)
+}
+/*
+ *Output:
+ * t 3 21.428572
+ * e 2 14.285715
+ * u 2 14.285715
+ * l 1 7.1428576
+ *   1 7.1428576
+ * b 1 7.1428576
+ * a 1 7.1428576
+ * i 1 7.1428576
+ * f 1 7.1428576
+ * x 1 7.1428576
+ */
 ```
 
 # Method
