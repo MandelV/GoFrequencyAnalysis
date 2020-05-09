@@ -5,16 +5,22 @@ import (
 	"testing"
 )
 
-//TestFrequency d
-func TestGeneric(test *testing.T) {
-	test.Log("Loading file")
+func initTests(test *testing.T) *Counter {
+	test.Log("Loading file...")
 	data, err := ioutil.ReadFile("./testing/sample1.txt")
 	if err != nil {
-		test.Fatal("Unable to open sample file")
+		test.Fatal(err)
 	}
-	test.Log("Initialize counter")
+	test.Log("Initialize Counter")
 	counter := Counter{Text: string(data)}
-	var freqAnalyse IFreqAnalysis = &counter
+	return &counter
+}
+
+//TestFrequency d
+func TestNumberOfPairs(test *testing.T) {
+
+	counter := initTests(test)
+	var freqAnalyse IFreqAnalysis = counter
 	test.Log("Make analysis")
 	freqAnalyse.Analysis()
 
