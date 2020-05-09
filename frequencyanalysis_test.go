@@ -21,5 +21,4 @@ func TestGeneric(test *testing.T) {
 	if len(counter.Pairs) == 0 {
 		test.Error("No pairs contained in counter")
 	}
-
 }
