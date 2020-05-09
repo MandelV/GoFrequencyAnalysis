@@ -31,7 +31,7 @@ type Pair struct {
  * array of Pair (see Pair)
  */
 type Counter struct {
-	text       string
+	Text       string
 	sizeText   int
 	mappedKeys map[string]int
 	pairs      []Pair
