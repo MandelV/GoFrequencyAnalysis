@@ -36,8 +36,7 @@ type Pair struct {
 
 # How to use
 
-So, to do some analysis you just need three thing : a text, a counter which also contains your text and the interface IFreqAnalysis
-
+So, to do some analysis you just need two things : a text and a counter which also contains your text.
 Here an example :
 
 ```Go
