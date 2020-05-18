@@ -8,6 +8,9 @@ import (
 func initTests(test *testing.T) *Counter {
 	test.Log("Loading file...")
 	data, err := ioutil.ReadFile("./testing/sample1.txt")
+
+	bla := ""
+
 	if err != nil {
 		test.Fatal(err)
 	}
